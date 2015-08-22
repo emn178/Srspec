@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+
+can_run_spring = `which spring` != "" && File.exist?("config/application.rb")
+args = ARGV.join(" ")
+cmd = can_run_spring ? "spring rspec" : "rspec"
+exec "#{cmd} #{args}"
