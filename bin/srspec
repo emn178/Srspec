@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-can_run_spring = `which spring` != "" && File.exist?("config/application.rb")
+can_run_spring = `which spring` != "" && (`spring 2>/dev/null`).include?("rspec")
 args = ARGV.join(" ")
 cmd = can_run_spring ? "spring rspec" : "rspec"
 exec "#{cmd} #{args}"
